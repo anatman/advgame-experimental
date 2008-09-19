@@ -56,7 +56,14 @@ class Place < Thing
     # returns a string listing the exits from a Place.
     # returns a string saying so if there are no exits.
     
-    "This place has no exits."
+    exit_names = {:n => 'north', :e => 'east', :s => 'south', :w => 'west'}
+    exits_list = []
+    
+    [:n, :e,:s, :w].each do |i|
+      exits_list << exit_names[i] if self.has_exit?(i)
+    end
+    
+    exits_list.size == 0 ? "This place has no exits." : "There are exits in these directions: #{exits_list.join(', ')}."
   end
   
   def look_at

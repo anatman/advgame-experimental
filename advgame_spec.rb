@@ -91,7 +91,7 @@ describe Place do
   end
   
   it "should list the exits if any when looked at" do
-    @place.look_at.should == "Default place: A generic default location\nThis place has no exits."
+    @place.look_at.should == "Default Place: A generic default location\nThis place has no exits."
     @place2.look_at.should == "This Room: This is a specific place\nThere are exits in these directions: east, south."
   end
   

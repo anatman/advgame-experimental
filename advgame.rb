@@ -67,7 +67,7 @@ class Place < Thing
   end
   
   def look_at
-    super
+    super + "\n#{exits_to}"
   end
 end
 

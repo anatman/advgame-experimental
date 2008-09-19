@@ -20,6 +20,18 @@ describe Thing do
     @thing.description.should == "This is a generic default Thing"
   end
   
+  it "should be possible to create a new Thing with its own name" do
+    @thing2 = Thing.new "Fred"
+    @thing2.name.should == "Fred"
+    @thing2 = nil
+  end
+  
+  it "should be possible to create a new Thing with its own description" do
+    @thing3 = Thing.new "Jane", "A generic character"
+    @thing3.description.should == "A generic character"
+    @thing3 = nil
+  end
+  
   after(:each) do
     @thing = nil
   end

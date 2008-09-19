@@ -41,6 +41,7 @@ end
 describe Place do
   before(:each) do
     @place = Place.new
+    @place2 = Place.new("This Room", "This is a specific place", [-1, 1, 2, -1]) 
   end
   
   it "should have a generic default name" do
@@ -59,7 +60,14 @@ describe Place do
     @place.exits.should be_empty
   end
   
+  it "should be possible to create a specific place" do
+    @place2.name.should == "This Room"
+    @place2.description.should == "This is a specific place"
+    @place2.exits.should == [-1, 1, 2, -1]
+  end
+  
   after(:each) do
     @place = nil
+    @place2 = nil
   end
 end

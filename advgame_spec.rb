@@ -90,6 +90,11 @@ describe Place do
     @place2.exits_to.should == "There are exits in these directions: east, south."
   end
   
+  it "should list the exits if any when looked at" do
+    @place.look_at.should == "Default place: A generic default location\nThis place has no exits."
+    @place2.look_at.should == "This Room: This is a specific place\nThere are exits in these directions: east, south."
+  end
+  
   after(:each) do
     @place = nil
     @place2 = nil

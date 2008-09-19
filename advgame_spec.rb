@@ -10,6 +10,8 @@ describe Thing do
   # make sure you have a fresh default Thing to work with for each test
   before(:each) do
     @thing = Thing.new
+    @thing2 = Thing.new "Fred"
+    @thing3 = Thing.new "Jane", "A generic character"
   end
   
   it "should have a generic default name" do
@@ -21,18 +23,16 @@ describe Thing do
   end
   
   it "should be possible to create a new Thing with its own name" do
-    @thing2 = Thing.new "Fred"
     @thing2.name.should == "Fred"
-    @thing2 = nil
   end
   
   it "should be possible to create a new Thing with its own description" do
-    @thing3 = Thing.new "Jane", "A generic character"
     @thing3.description.should == "A generic character"
-    @thing3 = nil
   end
   
   after(:each) do
     @thing = nil
+    @thing2 = nil
+    @thing3 = nil
   end
 end

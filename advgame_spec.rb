@@ -40,7 +40,7 @@ end
 
 describe Place do
   before(:each) do
-    @place = place.new
+    @place = Place.new
   end
   
   it "should have a generic default name" do

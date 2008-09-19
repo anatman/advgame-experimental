@@ -16,3 +16,10 @@ class Thing
     @description = description
   end
 end
+
+class Place < Thing
+  # this class is for Places (game rooms and other locations)
+  
+  # a Place has a name, (string), a description (string) and exits (array of symbols)
+  
+end

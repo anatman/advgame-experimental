@@ -71,6 +71,8 @@ describe Place do
     @place2.has_exit?(:e).should == 1
     @place2.has_exit?(:s).should == 2
     @place2.has_exit?(:w).should == nil
+    @place2.has_exit?(:r).should == nil
+    @place2.has_exit?('n').should == nil
   end
   
   after(:each) do

@@ -32,4 +32,16 @@ class Place < Thing
     @exits = exits
     super(name, description)
   end
+  
+  def has_exit?(direction)
+    # determines whether the cirrent room has an exit in the given direction and if so, wher it goes.
+    
+    # takes a symbol (:n, :e, >s, or :w) representing a direction
+    
+    # returns nil if there is no exit in the given direction and the number of the room in that direction
+    # if there is an exit. if given a nonsymbol or incorrect symbol, also returns nil.
+    
+    dirs = {:n => 0, :e => 1, :s => 2, :w => 3}
+    exits[dirs[direction]] == -1 ? nil : dirs[direction]
+  end
 end

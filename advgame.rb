@@ -9,5 +9,9 @@ class Thing
   
   # a Thing has a name (string) and a description (string).
   
-
+  attr_reader :name, :description # made getters with attr_reader for testing convenience. they aren't needed for game play.
+  
+  def initialize(name = "Default Name")
+    @name = name
+  end
 end

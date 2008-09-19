@@ -86,6 +86,10 @@ describe Place do
     @place2.exits_to.should_not == "This place has no exits."
   end
   
+  it "should be able to list the exits if they exist" do
+    @place2.exits_to.should == "There are exits in these directions: east, south."
+  end
+  
   after(:each) do
     @place = nil
     @place2 = nil

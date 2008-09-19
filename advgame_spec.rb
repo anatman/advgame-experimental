@@ -92,7 +92,15 @@ describe Map do
   end
   
   it "should default to an empty array" do
-    @map.rooms.should be_an_instance_of(Array)
-    @map.rooms.size.should == 0
+    @map.places.should be_an_instance_of(Array)
+    @map.places.size.should == 0
+  end
+  
+  it "should be possible to populate the map" do
+    @map2.places.size.should == 4
+    @map2.places[0].should == @place0
+    @map2.places[1].should == @place1
+    @map2.places[2].name.should == "Corner"
+    @map2.places[3].description.should == "An ancient cave mouth"
   end
 end

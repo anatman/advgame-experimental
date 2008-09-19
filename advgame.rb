@@ -52,7 +52,7 @@ class Map
   
   attr_reader :rooms
   
-  def initialize(*rooms)
-    @rooms = rooms
+  def initialize(*places)
+    @places = places
   end
 end

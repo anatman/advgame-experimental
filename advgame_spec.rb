@@ -71,12 +71,28 @@ describe Place do
     @place2.has_exit?(:e).should == 1
     @place2.has_exit?(:s).should == 2
     @place2.has_exit?(:w).should == nil
-    @place2.has_exit?(:r).should == nil
-    @place2.has_exit?('n').should == nil
+    @place2.has_exit?(:r).should == nil # testing a bad input
+    @place2.has_exit?('n').should == nil # testing a bad input of an unexpected type
   end
   
   after(:each) do
     @place = nil
     @place2 = nil
+  end
+end
+
+describe Map do
+  before(:each) do
+    @place0 = Place.new("Entrance", "An abandoned mineshaft", [1, 2, -1, -1])
+    @place1 = Place.new("Collapsed Passage", "A debris filled caved in passage", [-1, -1, 0, -1])
+    @place2 = Place.new("Corner", "A tunnel that makes an abrupt right turn", [-1, -1, 3, 0])
+    @place3 = Place.new("Exit", "An ancient cave mouth", [2, -1, -1, -1])
+    @map = Map.new
+    @map2 = Map.new(@place0, @place1, @place2, @place3)
+  end
+  
+  it "should default to an empty array" do
+    @map.rooms.should be_an_instance_of(Array)
+    @map.rooms.size.should == 0
   end
 end

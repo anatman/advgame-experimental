@@ -15,6 +15,10 @@ describe Thing do
   it "should have a generic default name" do
     @thing.name.should == "Default Name"
   end
+    
+  it "should have a generic default description" do
+    @thing.description.should == "This is a generic default Thing"
+  end
   
   after(:each) do
     @thing = nil

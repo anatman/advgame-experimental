@@ -46,3 +46,7 @@ class Place < Thing
     goto ? (exits[goto] == -1 ? nil : goto) : nil
   end
 end
+
+class Map
+  
+end

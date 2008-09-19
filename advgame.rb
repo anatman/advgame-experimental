@@ -17,7 +17,7 @@ class Thing
   end
   
   def look_at
-    
+    "#@name:\n#@description"
   end
 end
 

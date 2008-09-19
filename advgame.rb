@@ -56,7 +56,7 @@ class Place < Thing
     # returns a string listing the exits from a Place.
     # returns a string saying so if there are no exits.
     
-    
+    "This place has no exits."
   end
   
   def look_at

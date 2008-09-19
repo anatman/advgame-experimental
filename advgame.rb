@@ -48,5 +48,11 @@ class Place < Thing
 end
 
 class Map
+  # this class just holds a map (an array of Places)
   
+  attr_reader :rooms
+  
+  def initialize(*rooms)
+    @rooms = rooms
+  end
 end

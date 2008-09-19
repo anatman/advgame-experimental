@@ -50,7 +50,7 @@ end
 class Map
   # this class just holds a map (an array of Places)
   
-  attr_reader :rooms
+  attr_reader :places
   
   def initialize(*places)
     @places = places

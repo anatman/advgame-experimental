@@ -66,6 +66,13 @@ describe Place do
     @place2.exits.should == [-1, 1, 2, -1]
   end
   
+  it "should be able to tell if it has an exit in a given direction" do
+    @place2.has_exit?(:n).should == nil
+    @place2.has_exit?(:e).should == 1
+    @place2.has_exit?(:s).should == 2
+    @place2.has_exit?(:w).should == nil
+  end
+  
   after(:each) do
     @place = nil
     @place2 = nil

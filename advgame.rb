@@ -9,7 +9,7 @@ class Thing
   
   # a Thing has a name (string) and a description (string).
   
-  attr_reader :name, :description # made getters with attr_reader for testing convenience. they aren't needed for game play.
+  attr_reader :name, :description
   
   def initialize(name = "Default Name", description = "This is a generic default Thing")
     @name = name
@@ -22,7 +22,10 @@ class Place < Thing
   
   # a Place has a name, (string), a description (string) and exits (array of symbols)
   
-  def initialize(name = "Default Place", description = "A generic default location")
+  attr_reader :exits
+  
+  def initialize(name = "Default Place", description = "A generic default location", exits = [])
+    @exits = exits
     super(name, description)
   end
 end

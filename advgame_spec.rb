@@ -52,7 +52,7 @@ describe Place do
   end
   
   it "should have an exits array" do
-    @place.exits.should exist
+    @place.exits.should be_an_instance_of(Array)
   end
   
   after(:each) do

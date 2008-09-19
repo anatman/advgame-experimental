@@ -51,6 +51,10 @@ describe Place do
     @place.description.should == "A generic default location"
   end
   
+  it "should have an exits array" do
+    @place.exits.should exist
+  end
+  
   after(:each) do
     @place = nil
   end

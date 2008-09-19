@@ -10,6 +10,7 @@ describe Thing do
   # make sure you have a fresh default Thing to work with for each test
   before(:each) do
     @thing = Thing.new
+    # thing2 and thing3 are for testing nondefault initialization
     @thing2 = Thing.new "Fred"
     @thing3 = Thing.new "Jane", "A generic character"
   end
@@ -34,5 +35,19 @@ describe Thing do
     @thing = nil
     @thing2 = nil
     @thing3 = nil
+  end
+end
+
+describe Place do
+  before(:each) do
+    @place = place.new
+  end
+  
+  it "should have a generic default name" do
+    @place.name.should == "Default Place"
+  end
+  
+  after(:each) do
+    @place = nil
   end
 end

@@ -20,11 +20,15 @@ end
 class Place < Thing
   # this class is for Places (game rooms and other locations)
   
-  # a Place has a name, (string), a description (string) and exits (array of symbols)
+  # a Place has a name, (string), a description (string) and exits (array of integers)
+  
+  # exits is a four element array representing possible exits in the order north, east, south, west.
+  # exits are represented by integers. -1 means there is no exit in that direction. 0, 1, 2, etc.
+  # represent exits to the room with that index in the map.
   
   attr_reader :exits
   
-  def initialize(name = "Default Place", description = "A generic default location", exits = [])
+  def initialize(name = "Default Place", description = "A generic default location", exits = [-1, -1, -1, -1])
     @exits = exits
     super(name, description)
   end

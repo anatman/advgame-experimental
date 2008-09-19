@@ -56,8 +56,8 @@ describe Place do
     @place.exits.should be_an_instance_of(Array)
   end
   
-  it "should default to an empty exits array" do
-    @place.exits.should be_empty
+  it "should default to an exits array of [-1, -1, -1, -1] (no exits)" do
+    @place.exits.should == [-1, -1, -1, -1]
   end
   
   it "should be possible to create a specific place" do

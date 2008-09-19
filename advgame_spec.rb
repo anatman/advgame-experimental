@@ -12,7 +12,7 @@ describe Thing do
     @thing = Thing.new
     # thing2 and thing3 are for testing nondefault initialization
     @thing2 = Thing.new "Fred"
-    @thing3 = Thing.new "Jane", "A generic character"
+    @thing3 = Thing.new "Jane", "A different generic Thing"
   end
   
   it "should have a generic default name" do
@@ -28,7 +28,13 @@ describe Thing do
   end
   
   it "should be possible to create a new Thing with its own description" do
-    @thing3.description.should == "A generic character"
+    @thing3.description.should == "A different generic Thing"
+  end
+  
+  it "should be able to name and describe itself when looked at" do
+    @thing.look_at.should == "Default Name:\nThis is a generic default Thing"
+    @thing2.look_at.should == "Fred:\nThis is a generic default Thing"
+    @thing3.look_at.should == "Jane:\nA different generic Thing"
   end
   
   after(:each) do
@@ -83,10 +89,10 @@ end
 
 describe Map do
   before(:each) do
-    @place0 = Place.new("Entrance", "An abandoned mineshaft", [1, 2, -1, -1])
-    @place1 = Place.new("Collapsed Passage", "A debris filled caved in passage", [-1, -1, 0, -1])
-    @place2 = Place.new("Corner", "A tunnel that makes an abrupt right turn", [-1, -1, 3, 0])
-    @place3 = Place.new("Exit", "An ancient cave mouth", [2, -1, -1, -1])
+    @place0 = Place.new("The Entrance", "An abandoned mineshaft", [1, 2, -1, -1])
+    @place1 = Place.new("A Collapsed Passage", "A debris filled caved in passage", [-1, -1, 0, -1])
+    @place2 = Place.new("A Corner", "A tunnel that makes an abrupt right turn", [-1, -1, 3, 0])
+    @place3 = Place.new("The Exit", "An ancient cave mouth", [2, -1, -1, -1])
     @map = Map.new
     @map2 = Map.new(@place0, @place1, @place2, @place3)
   end
@@ -96,11 +102,11 @@ describe Map do
     @map.places.size.should == 0
   end
   
-  it "should be possible to populate the map" do
+  it "should be able to populate the map" do
     @map2.places.size.should == 4
     @map2.places[0].should == @place0
     @map2.places[1].should == @place1
-    @map2.places[2].name.should == "Corner"
+    @map2.places[2].name.should == "A Corner"
     @map2.places[3].description.should == "An ancient cave mouth"
   end
 end

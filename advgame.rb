@@ -15,6 +15,10 @@ class Thing
     @name = name
     @description = description
   end
+  
+  def look_at
+    
+  end
 end
 
 class Place < Thing

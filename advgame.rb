@@ -11,7 +11,8 @@ class Thing
   
   attr_reader :name, :description # made getters with attr_reader for testing convenience. they aren't needed for game play.
   
-  def initialize(name = "Default Name")
+  def initialize(name = "Default Name", description = "This is a generic default Thing")
     @name = name
+    @description = description
   end
 end

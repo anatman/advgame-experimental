@@ -22,7 +22,7 @@ class Place < Thing
   
   # a Place has a name, (string), a description (string) and exits (array of symbols)
   
-  def initialize(name = "Default Place")
-    super(name)
+  def initialize(name = "Default Place", description = "A generic default location")
+    super(name, description)
   end
 end

@@ -47,6 +47,10 @@ describe Place do
     @place.name.should == "Default Place"
   end
   
+  it "should have a generic default description" do
+    @place.description.should == "A generic default location"
+  end
+  
   after(:each) do
     @place = nil
   end

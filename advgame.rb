@@ -42,6 +42,7 @@ class Place < Thing
     # if there is an exit. if given a nonsymbol or incorrect symbol, also returns nil.
     
     dirs = {:n => 0, :e => 1, :s => 2, :w => 3}
-    exits[dirs[direction]] == -1 ? nil : dirs[direction]
+    goto = dirs[direction] # i love goto not being a reserved word!
+    goto ? (exits[goto] == -1 ? nil : goto) : nil
   end
 end

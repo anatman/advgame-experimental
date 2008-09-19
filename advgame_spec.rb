@@ -55,6 +55,10 @@ describe Place do
     @place.exits.should be_an_instance_of(Array)
   end
   
+  it "should default to an empty exits array" do
+    @place.exits.should be_empty
+  end
+  
   after(:each) do
     @place = nil
   end

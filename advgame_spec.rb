@@ -32,9 +32,9 @@ describe Thing do
   end
   
   it "should be able to name and describe itself when looked at" do
-    @thing.look_at.should == "Default Name:\nThis is a generic default Thing"
-    @thing2.look_at.should == "Fred:\nThis is a generic default Thing"
-    @thing3.look_at.should == "Jane:\nA different generic Thing"
+    @thing.look_at.should == "Default Name: This is a generic default Thing"
+    @thing2.look_at.should == "Fred: This is a generic default Thing"
+    @thing3.look_at.should == "Jane: A different generic Thing"
   end
   
   after(:each) do
@@ -79,6 +79,11 @@ describe Place do
     @place2.has_exit?(:w).should == nil
     @place2.has_exit?(:r).should == nil # testing a bad input
     @place2.has_exit?('n').should == nil # testing a bad input of an unexpected type
+  end
+  
+  it "should be able to report when it has no exits" do
+    @place.exits_to.should == "This place has no exits."
+    @place2.exits_to.should_not == "This place has no exits."
   end
   
   after(:each) do

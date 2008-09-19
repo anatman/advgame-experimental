@@ -17,7 +17,9 @@ class Thing
   end
   
   def look_at
-    "#@name:\n#@description"
+    # allows you to "look at" a Thing. returns a formatted name and description
+    
+    "#@name: #@description"
   end
 end
 
@@ -48,6 +50,17 @@ class Place < Thing
     dirs = {:n => 0, :e => 1, :s => 2, :w => 3}
     goto = dirs[direction] # i love goto not being a reserved word!
     goto ? (exits[goto] == -1 ? nil : goto) : nil
+  end
+  
+  def exits_to
+    # returns a string listing the exits from a Place.
+    # returns a string saying so if there are no exits.
+    
+    
+  end
+  
+  def look_at
+    super
   end
 end
 

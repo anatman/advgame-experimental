@@ -1,7 +1,11 @@
 # test_advgame.rb
 # a console front end that allows a user to play a very simple test game with advgame.rb
 
-# the user plays the part of Satish, an explorer and must travel from the entrance to the exit
+# this also serves as an acceptance test
+# it could also be considered to be a very simple example of a DSL, (Domain Specific Language), a very
+# common Ruby programming pattern. Rspec and Rails, for example are or contain DSLs.
+
+# the user plays the part of Satish, An Explorer and must travel from The Entrance to The Exit
 
 require 'advgame'
 
@@ -45,6 +49,6 @@ while !done do
   STDOUT.flush  
 end
 puts "You have won the game! What an accomplishment!"
-puts "(Press enter to exit)."
+puts "(Press the enter key to exit)."
 STDOUT.flush
 gets

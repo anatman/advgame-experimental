@@ -23,11 +23,11 @@ describe Thing do
     @thing.description.should == "This is a generic default Thing"
   end
   
-  it "should be possible to create a new Thing with its own name" do
+  it "should be able to create a new Thing with its own name" do
     @thing2.name.should == "Fred"
   end
   
-  it "should be possible to create a new Thing with its own description" do
+  it "should be able to create a new Thing with its own description" do
     @thing3.description.should == "A different generic Thing"
   end
   
@@ -66,7 +66,7 @@ describe Place do
     @place.exits.should == [-1, -1, -1, -1]
   end
   
-  it "should be possible to create a specific place" do
+  it "should be able to create a specific place" do
     @place2.name.should == "This Room"
     @place2.description.should == "This is a specific place"
     @place2.exits.should == [-1, 1, 2, -1]
@@ -132,6 +132,7 @@ end
 describe Character do
   before(:each) do
     @character = Character.new
+    @character2 = Character.new("Satish", "An explorer")
   end
   
   it "should be a Thing" do
@@ -139,7 +140,13 @@ describe Character do
     @character.description.should == "This is a generic default Thing"
   end
   
+  it "should be able to create a specific Character" do
+    @character.name.should == "Satish"
+    @character.description.should == "An Explorer"
+  end
+  
   after(:each) do
     @character = nil
+    @character2 = nil
   end
 end

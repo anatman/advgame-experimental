@@ -135,7 +135,7 @@ describe Character do
     @place1 = Place.new("A Collapsed Passage", "A debris filled caved in passage", [-1, -1, 0, -1])
     @map = Map.new(@place0, @place1)
     @character = Character.new
-    @character2 = Character.new("Satish", "An Explorer")
+    @character2 = Character.new("Satish", "An Explorer", @map, 0)
   end
   
   it "should be a Thing" do
@@ -150,6 +150,7 @@ describe Character do
   
   it "should have a location" do
     @character.location.look_at.should == "Default Place: A generic default location\nThis place has no exits."
+    @character2.location.look_at.should == "The Entrance: An abandoned mineshaft\nThere are exits in these directions: north, east."
   end
   
   after(:each) do

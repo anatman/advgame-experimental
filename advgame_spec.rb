@@ -149,9 +149,7 @@ describe Character do
   end
   
   it "should have a location" do
-    @character.location.name.should == "Default Place"
-    @character.location.description.should == "A generic default location"
-    @character.location.exits.should == [-1, -1, -1, -1]
+    @character.location.look_at.should == "Default Place: A generic default location\nThis place has no exits."
   end
   
   after(:each) do

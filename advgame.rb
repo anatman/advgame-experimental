@@ -82,7 +82,15 @@ class Map
 end
 
 class Character < Thing
-  def initialize(name = "Default Character", description = "Default Character description")
-    super
+  # this class holds the character who serves as the player's viewpoint.
+  
+  # a Character has a name (String), a description (String), and a location (Place).
+  # the Character determines its location in reference to a Map.
+  
+  attr_reader :location
+  
+  def initialize(name = "Default Character", description = "Default Character description", map = Map.new(Place.new), place = 0)
+    super(name, description)
+    @location = map.places[place]
   end
 end

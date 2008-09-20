@@ -82,5 +82,7 @@ class Map
 end
 
 class Character < Thing
-  
+  def initialize(name = "Default Character", description = "Default Character description")
+    super
+  end
 end

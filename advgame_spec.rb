@@ -132,17 +132,17 @@ end
 describe Character do
   before(:each) do
     @character = Character.new
-    @character2 = Character.new("Satish", "An explorer")
+    @character2 = Character.new("Satish", "An Explorer")
   end
   
   it "should be a Thing" do
-    @character.name.should == "Default Name"
-    @character.description.should == "This is a generic default Thing"
+    @character.name.should == "Default Character"
+    @character.description.should == "Default Character description"
   end
   
   it "should be able to create a specific Character" do
-    @character.name.should == "Satish"
-    @character.description.should == "An Explorer"
+    @character2.name.should == "Satish"
+    @character2.description.should == "An Explorer"
   end
   
   after(:each) do

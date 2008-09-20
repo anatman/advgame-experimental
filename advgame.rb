@@ -80,3 +80,7 @@ class Map
     @places = places
   end
 end
+
+class Character < Thing
+  
+end

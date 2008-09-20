@@ -113,7 +113,7 @@ describe Map do
   
   it "should default to an empty array" do
     @map.places.should be_an_instance_of(Array)
-    @map.places.size.should == 0
+    @map.places.should be_empty
   end
   
   it "should be able to populate the map" do
@@ -122,5 +122,24 @@ describe Map do
     @map2.places[1].should == @place1
     @map2.places[2].name.should == "A Corner"
     @map2.places[3].description.should == "An ancient cave mouth"
+  end
+  
+  after(:each) do
+    [@place0, @place1, @place2, @place3, @map, @map2].each { |i| i = nil }
+  end
+end
+
+describe Character do
+  before(:each) do
+    @character = Character.new
+  end
+  
+  it "should be a Thing" do
+    @character.name.should == "Default Name"
+    @character.description.should == "This is a generic default Thing"
+  end
+  
+  after(:each) do
+    @character = nil
   end
 end

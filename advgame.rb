@@ -40,16 +40,16 @@ class Place < Thing
   end
   
   def has_exit?(direction)
-    # determines whether the cirrent room has an exit in the given direction and if so, wher it goes.
+    # determines whether the cirrent room has an exit in the given direction and if so, where it goes.
     
-    # takes a symbol (:n, :e, >s, or :w) representing a direction
+    # takes a symbol (:n, :e, :s, or :w) representing a direction
     
     # returns nil if there is no exit in the given direction and the number of the room in that direction
     # if there is an exit. if given a nonsymbol or incorrect symbol, also returns nil.
     
     dirs = {:n => 0, :e => 1, :s => 2, :w => 3}
     goto = dirs[direction] # i love goto not being a reserved word!
-    goto ? (exits[goto] == -1 ? nil : goto) : nil
+    goto ? (exits[goto] == -1 ? nil : exits[goto]) : nil
   end
   
   def exits_to
@@ -88,7 +88,7 @@ class Character < Thing
   # it also keeps track of the map being used (Map) for internal use
   # the Character determines its location in reference to a Map.
   
-  attr_reader :location
+  attr_reader :location, :map
   
   def initialize(name = "Default Character", description = "Default Character description", map = Map.new(Place.new), place = 0)
     super(name, description)
@@ -103,12 +103,12 @@ class Character < Thing
   def move(direction)
     # moves the character in the desired direction if possible and reports the new location or reports failure.
     
-    # takes a symbol (:n, :e, :s, or :w) and returns a String
+    # takes a symbol (:n, :e, :s, or :w) and returns an array containing the (new if changed) location and a String
     
     goto = location.has_exit?(direction)
     
     if goto
-      location = map.places[goto]
+      self.location = map.places[goto]
       "Your new location is\n" + location.look_at
     else
       "There is no exit in that direction."

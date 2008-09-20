@@ -133,7 +133,9 @@ describe Character do
   before(:each) do
     @place0 = Place.new("The Entrance", "An abandoned mineshaft", [1, 2, -1, -1])
     @place1 = Place.new("A Collapsed Passage", "A debris filled caved in passage", [-1, -1, 0, -1])
-    @map = Map.new(@place0, @place1)
+    @place2 = Place.new("A Corner", "A tunnel that makes an abrupt right turn", [-1, -1, 3, 0])
+    @place3 = Place.new("The Exit", "An ancient cave mouth", [2, -1, -1, -1])
+    @map = Map.new(@place0, @place1, @place2, @place3)
     @character = Character.new
     @character2 = Character.new("Satish", "An Explorer", @map, 0)
   end
@@ -160,13 +162,15 @@ describe Character do
   
   it "should be able to move" do
     [:n, :e, :s, :w].each do |i|
-      @character.move(i).should == "There is no exit in that direction."
+      @character.location.should == "There is no exit in that direction."
       @character.location.look_at.should == "Default Place: A generic default location\nThis place has no exits."
     end
-    
+    @character2.move(:s).should == "There is no exit in that direction."
+    @character2.move(:e).should == "Your new location is\nA Corner: A tunnel that makes an abrupt right turn\nThere are exits in these directions: south, west."
+    @character2.move(:s).should == "Your new location is\nThe Exit: An ancient cave mouth\nThere are exits in these directions: north."
   end
   
   after(:each) do
-    [@place0, @place1, @map, @character, @character2].each { |i| i = nil }
+    [@place0, @place1, @place2, @place3, @map, @character, @character2].each { |i| i = nil }
   end
 end

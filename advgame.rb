@@ -63,7 +63,7 @@ class Place < Thing
       exits_list << exit_names[i] if self.has_exit?(i)
     end
     
-    exits_list.size == 0 ? "This place has no exits." : "There are exits in these directions: #{exits_list.join(', ')}."
+    exits_list.empty? ? "This place has no exits." : "There are exits in these directions: #{exits_list.join(', ')}."
   end
   
   def look_at
@@ -85,12 +85,14 @@ class Character < Thing
   # this class holds the character who serves as the player's viewpoint.
   
   # a Character has a name (String), a description (String), and a location (Place).
+  # it also keeps track of the map being used (Map) for internal use
   # the Character determines its location in reference to a Map.
   
   attr_reader :location
   
   def initialize(name = "Default Character", description = "Default Character description", map = Map.new(Place.new), place = 0)
     super(name, description)
+    @map = map
     @location = map.places[place]
   end
   
@@ -103,6 +105,13 @@ class Character < Thing
     
     # takes a symbol (:n, :e, :s, or :w) and returns a String
     
+    goto = location.has_exit?(direction)
     
+    if goto
+      location = map.places[goto]
+      "Your new location is\n" + location.look_at
+    else
+      "There is no exit in that direction."
+    end
   end
 end

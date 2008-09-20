@@ -131,6 +131,9 @@ end
 
 describe Character do
   before(:each) do
+    @place0 = Place.new("The Entrance", "An abandoned mineshaft", [1, 2, -1, -1])
+    @place1 = Place.new("A Collapsed Passage", "A debris filled caved in passage", [-1, -1, 0, -1])
+    @map = Map.new(@place0, @place1)
     @character = Character.new
     @character2 = Character.new("Satish", "An Explorer")
   end
@@ -145,8 +148,13 @@ describe Character do
     @character2.description.should == "An Explorer"
   end
   
+  it "should have a location" do
+    @character.location.name.should == "Default Place"
+    @character.location.description.should == "A generic default location"
+    @character.location.exits.should == [-1, -1, -1, -1]
+  end
+  
   after(:each) do
-    @character = nil
-    @character2 = nil
+    [@place0, @place1, @map, @character, @character2].each { |i| i = nil }
   end
 end

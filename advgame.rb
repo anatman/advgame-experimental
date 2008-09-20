@@ -88,7 +88,8 @@ class Character < Thing
   # it also keeps track of the map being used (Map) for internal use
   # the Character determines its location in reference to a Map.
   
-  attr_reader :location, :map
+  attr_reader :map
+  attr_accessor :location
   
   def initialize(name = "Default Character", description = "Default Character description", map = Map.new(Place.new), place = 0)
     super(name, description)
@@ -100,14 +101,17 @@ class Character < Thing
     super + "\n" + location.look_at
   end
   
-  def move(direction)
+  def move!(direction)
     # moves the character in the desired direction if possible and reports the new location or reports failure.
+    # this method's name ends with a ! because it modifies the location of the Character itself.
     
-    # takes a symbol (:n, :e, :s, or :w) and returns an array containing the (new if changed) location and a String
+    # takes a symbol (:n, :e, :s, or :w) and returns a String
     
     goto = location.has_exit?(direction)
     
     if goto
+      # using self.location here modifies the location of the Character itself
+      
       self.location = map.places[goto]
       "Your new location is\n" + location.look_at
     else

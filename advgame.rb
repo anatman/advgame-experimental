@@ -95,6 +95,6 @@ class Character < Thing
   end
   
   def look_at
-    
+    super + "\n" + location.look_at
   end
 end

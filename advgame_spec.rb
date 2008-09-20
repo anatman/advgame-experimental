@@ -154,7 +154,7 @@ describe Character do
   end
   
   it "should name and describe itself and its location when looked at" do
-    @character.look_at.should == "Default Character: Default Character description\nDefault place: A generic default location\nThis place has no exits."
+    @character.look_at.should == "Default Character: Default Character description\nDefault Place: A generic default location\nThis place has no exits."
     @character2.look_at.should == "Satish: An Explorer\nThe Entrance: An abandoned mineshaft\nThere are exits in these directions: north, east."
   end
   

@@ -158,6 +158,14 @@ describe Character do
     @character2.look_at.should == "Satish: An Explorer\nThe Entrance: An abandoned mineshaft\nThere are exits in these directions: north, east."
   end
   
+  it "should be able to move" do
+    [:n, :e, :s, :w].each do |i|
+      @character.move(i).should == "There is no exit in that direction."
+      @character.location.look_at.should == "Default Place: A generic default location\nThis place has no exits."
+    end
+    
+  end
+  
   after(:each) do
     [@place0, @place1, @map, @character, @character2].each { |i| i = nil }
   end

@@ -97,4 +97,12 @@ class Character < Thing
   def look_at
     super + "\n" + location.look_at
   end
+  
+  def move(direction)
+    # moves the character in the desired direction if possible and reports the new location or reports failure.
+    
+    # takes a symbol (:n, :e, :s, or :w) and returns a String
+    
+    
+  end
 end

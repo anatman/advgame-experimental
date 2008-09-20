@@ -93,4 +93,8 @@ class Character < Thing
     super(name, description)
     @location = map.places[place]
   end
+  
+  def look_at
+    
+  end
 end

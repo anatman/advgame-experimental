@@ -8,30 +8,21 @@ place3 = Place.new("The Exit", "An ancient cave mouth", [2, -1, -1, -1])
 map = Map.new(place0, place1, place2, place3)
 character = Character.new("loogink", "An Explorer", map, 0)
 
-Shoes.app :width => 420, :height => 550, :title => 'Adventure Game v0.1' do
-  @pos = [100, 150], [100, 100], [250, 150], [250, 200]
-  
-  def pos name
-    x, y = case name
-      when "The Entrance" then @pos[0]
-      when "A Collapsed Passage" then @pos[1]
-      when "A Corner" then @pos[2]
-      when "The Exit" then  @pos[3]
-      else
-    end
-  end
+Shoes.app :width => 420, :height => 550, :title => 'Adventure Game v0.1a' do
+  pos = [100, 150], [100, 100], [250, 150], [250, 200]
+  number = {"The Entrance" => 0, "A Collapsed Passage" => 1, "A Corner" => 2, "The Exit" => 3}
   
   fill gold.to_s..coral.to_s
   rect :width => 400, :height => 300, :left => 10, :top => 10, :curve => 10
   rooms = []
   stroke white
   strokewidth 4
-  [[0, 1], [0, 2], [2, 3]].each{|a, b| line @pos[a][0] + 15, @pos[a][1] + 15, @pos[b][0] + 15, @pos[b][1] + 15}
+  [[0, 1], [0, 2], [2, 3]].each{|a, b| line pos[a][0] + 15, pos[a][1] + 15, pos[b][0] + 15, pos[b][1] + 15}
   
   map.places.each{|place| rooms << oval(0, 0, 30, :fill => green)}
-  rooms.each_with_index{|room, i| room.move @pos[i][0], @pos[i][1]}
+  rooms.each_with_index{|room, i| room.move pos[i][0], pos[i][1]}
   
-  x, y = pos character.location.name
+  x, y = pos[number[character.location.name]]
   @avatar = image Dir.pwd + '/loogink.png', :left => x, :top=> y
   
 s =<<-EOS
@@ -51,7 +42,8 @@ EOS
     case k
       when 'n', 'e', 's', 'w'
         @msg.text = character.move!(k.to_sym)
-        @avatar.move *pos(character.location.name)
+        x, y = pos[number[character.location.name]]
+        @avatar.move x, y
       when 'l'
         @msg.text = character.look_at
         if character.location.name == "The Exit"

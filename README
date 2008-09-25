@@ -1,0 +1,30 @@
+This project is an exercise for the Intermediate Ruby class at RubyLearning.org
+
+This is the base of a simple text adventure game. You are part of a team that wants
+to enhance the game. Your  assignment comes in two parts, the first part is to be
+done this week, and the second part is to be done next week.
+
+Milestone 1 (first week): Add a Treasure class to advgame.rb. It is to be a subclass of
+Thing. Place must be modified to be able to contain a Treasure, if desired, and
+Place.look_at must show the Treasure or state that "There is nothing here.". It must
+be possible for a Character to take a treasure from the Place. Character must be given
+an inventory. When a Character takes a treasure from a Place it must no longer appear
+in the Place, but instead be in the Character's inventory. You should add an
+inventory method to Character that shows what Treasure(s) the Character is
+carrying. The Character.look_at method must also show what treasures the
+character is carrying or state that "You are carrying: nothing." You must,
+of course, modify advgame_spec.rb to perform the proper tests on your additions.
+You must also modify test_advgame.rb so that there is a Treasure (you name and
+describe it) in "A Collapsed Passage", and a different Treasure in A Corner.
+You should also modify test_advgame.rb so that it responds properly to the
+command inventory by showing the Character's current inventory and to the command
+take by taking the Treasure from the current Place and adding it to the Character's
+inventory or by stating "There is nothing to take here.". Finally, modify
+test_advgame.rb so that the Character must be carrying both treasures in order
+to exit and win the game.
+
+Milestone 2 (second week): Modify test_advgame_on_shoes.rb to honor the changes
+made in Milestone 1. you should also modify it to show a small star overlaid on
+the circle that represents a Place when that Place contains a Treasure. The star
+should disappear when the Treasure has been taken. For extra credit, make
+The Entrance and The Exit into diamonds instead of circles.
